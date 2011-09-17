@@ -1,1 +1,6 @@
 Pruebas e investigaciones de HTML5.
+
+
+*cubo.html: Un cubo en 3D que gira con css3
+*sticker.html: Un sticker que levanta una esquina con css3
+*testflip.html: Trabajando para hacer un efecto pageflip que funcione en el iPad con css3
