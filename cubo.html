@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>FDW</title>
+	
+	<style>
+	body {
+		background:#ccc;
+	}
+	
+	.wrapper {
+		position:relative;
+		-webkit-perspective:10000;
+		left:200px;
+		top:200px;
+	}
+	
+	.caja {
+		-webkit-transform-origin:50% 50%;
+		-webkit-transform-style:preserve-3d;
+		-webkit-animation:spin 5s infinite;
+		width:200px;
+		height:200px;
+		position:relative;
+	}
+	
+	.caja > div {
+		width:200px;
+		height:200px;
+		position:absolute;
+		background:-webkit-canvas(fdw), -webkit-radial-gradient(50% 50%, circle,transparent, rgba(0,0,0,.5)), -webkit-linear-gradient(top, #505d5b, #2c3231);
+	}
+	
+	.caja > div:nth-child(2) {
+		-webkit-transform:translate3d(0,0,200px);
+	}
+	
+	.caja > div:nth-child(3) {
+		-webkit-transform:rotateX(90deg) translate3d(0,100px, -100px);
+	}
+	
+	.caja > div:nth-child(3) {
+		-webkit-transform:rotateY(90deg) translate3d(-100px, 0, 100px);
+	}
+	
+	.caja > div:nth-child(4) {
+		-webkit-transform:rotateY(90deg) translate3d(-100px, 0, -100px);
+	}
+	
+	@-webkit-keyframes spin {
+		from {
+			-webkit-transform:rotateY(0) rotateX(360deg);
+		}
+		
+		to {
+			-webkit-transform:rotateY(360deg) rotateX(0deg);
+		}
+	}
+	</style
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="caja">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	
+	<script>
+	
+	var ctx = document.getCSSCanvasContext('2d', 'fdw', 200, 200);
+	
+	ctx.strokeStyle = '#e7d03e';
+	ctx.lineWidth = 15;
+	ctx.lineCap = 'round';
+	
+	
+	var grad = ctx.createLinearGradient(0,0,0,200);
+	grad.addColorStop(0, '#f9fbcd');
+	grad.addColorStop(.7, '#e7d03e');
+	
+	ctx.shadowOffsetX = 0;
+	ctx.shadowOffsetY = 0;
+	ctx.shadowBlur = 5;
+	ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+	
+	
+	ctx.strokeStyle = grad;
+	ctx.beginPath();
+	ctx.moveTo(80, 100);
+	ctx.quadraticCurveTo(100, 200, 120, 100);
+	ctx.moveTo(130, 100);
+	ctx.quadraticCurveTo(150, 200, 160, 100);
+	ctx.quadraticCurveTo(160, 30, 80, 50);
+	ctx.quadraticCurveTo(20, 70, 40, 140);
+	ctx.quadraticCurveTo(60, 190, 100, 190);
+	
+	//ctx.arc(100, 100, 50, 0, Math.PI*2, true);
+	ctx.stroke();
+	</script>
+</body>
+</html>

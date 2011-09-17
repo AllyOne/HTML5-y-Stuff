@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Prueba de efecto flip</title>
+	
+	<style>
+	.contenedor, .portada, .atras, .fondo {
+		width:300px;
+		height:500px;
+		position:absolute;
+	}
+	
+	.contenedor {
+		width:600px;
+		overflow:hidden;
+	}
+	
+	.portada, .atras, .fondo {
+		left:300px;
+	}
+	.portada {
+		background:grey;
+		box-shadow:0 0 20px rgba(0,0,0,.6);
+	}
+	
+	.fondo {
+		background:yellow;
+	}
+	.atras {
+		with:300px;
+		background:red;
+		-webkit-transform:translate(350px, -200px) rotate(-60deg);
+		-webkit-transition:-webkit-transform 2s;
+		box-shadow:0 0 20px rgba(0,0,0,.6);
+	}
+	
+	.contenedor:hover .atras {
+		-webkit-transform:translate(-300px, -0) rotate(0);
+	}
+	
+	.encima {
+		width:300px;
+		height:500px;
+		position:absolute;
+		left:300px;
+		overflow:hidden;
+	}
+	
+	.encima_dentro {
+		width:20px;
+		height:1000px;
+		background:-webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.2), rgba(0,0,0,0));
+		position:absolute;
+		-webkit-transform:translate(370px, -300px) rotate(-31deg);
+		-webkit-transition:-webkit-transform 2s;
+	}
+	
+	.contenedor:hover .encima_dentro {
+		-webkit-transform:translate(-25px, 0) rotate(0);
+	}
+	</style>
+</head>
+
+<body>
+	<div class="contenedor">
+		<div class="fondo"></div>
+		<div class="portada"></div>
+		<div class="atras"></div>
+			
+		<div class="encima">
+			<div class="encima_dentro"></div>
+		</div>	
+	</div>
+	
+</body>
+</html>
