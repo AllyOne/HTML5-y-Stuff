@@ -1,0 +1,22 @@
+!!! 5
+
+html
+	head
+		meta(charset="utf-8")
+
+		title Tooltips con CSS3
+
+		link(rel="stylesheet", href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css")
+		link(rel="stylesheet", href="css/index.css")
+
+	body
+		form: table
+			tr
+				td: label: span Descripción
+					span(data-tip="Es una pequeña descripción que siempre se muestra en el listado de items.")
+				td: input(type="text", name="descripcion", maxlength="70")
+
+			tr
+				td: label: span Descripción larga
+					span(data-tip="Es una descripción más completa que se mostrará en la vista previa del item. Si se deja en blanco se mostrará la descripción corta.")
+				td: textarea(name="descripcion_larga", maxlength="260")

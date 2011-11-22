@@ -1,0 +1,26 @@
+[data-tip] {
+  width: 22px;
+  height: 21px;
+  display: inline-block;
+  background: url("img/ayuda.png") 5px 5px no-repeat;
+  position: relative;
+  left: 3px;
+  top: 3px;
+  cursor: pointer;
+}
+[data-tip]:hover:after {
+  background: url("img/ayuda.png") 5px 5px no-repeat, rgba(0,0,0,0.80);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  content: attr(data-tip);
+  color: #f1f1f1;
+  text-align: left;
+  padding: 5px;
+  padding-left: 30px;
+  z-index: 9;
+}
