@@ -1,1 +1,14 @@
+# python settings file
+settings.py
+
+# python compiled files
+*.pyc
+
+# databases
+*.db
+
+# OS generated files
 .DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
