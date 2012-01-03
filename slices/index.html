@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+
+	<style>
+
+	@-webkit-keyframes slide-bottom {
+		from {
+			-webkit-transform: translate3d(0, -100%, 0);
+			opacity:0;
+		}
+	}
+
+	@-moz-keyframes slide-bottom {
+		from {
+			-moz-transform: translate(0, -100%);
+			opacity:0;
+		}
+	}
+
+	.slice
+	{
+		float:left;
+		-webkit-animation:slide-bottom .5s both;
+		-moz-animation:slide-bottom .5s both;
+		background-repeat: no-repeat;
+	}
+
+	</style>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script>
+
+
+
+	jQuery (function ($) {
+		
+
+		var slices = function (param) {
+			var slices, img, opciones, $padre;
+
+			// valores por default
+			opciones = $.extend({
+				src: 'default.jpg',
+				selector: 'body',
+				divisiones: 10,
+				delay: .2
+			}, param);
+
+			// el elemento padre
+			$slices = $(opciones.selector);
+			img    = new Image();
+
+			// cuando la imagen se ha cargado (para tener sus dimensiones)
+			img.onload = function () {
+				var i, slice_width, $slice;
+
+				// el tamaño de cada slide
+				slice_width = img.width/opciones.divisiones;
+
+				for(i = 0; i < opciones.divisiones; i++) {
+					$slice = $('<div class="slice" />'); // cada pedacito
+
+					$slice.css({
+						width: slice_width+'px',
+						height: img.height,
+						// dar un offset a la posicion de la imagen
+						background: 'url('+img.src+') -'+(slice_width*i)+'px'+' top',
+						// retardo de la animacion 
+						'-webkit-animation-delay': (opciones.delay*i)+'s',
+						'-moz-animation-delay': (opciones.delay*i)+'s'
+					});
+
+					$slices.append($slice);
+				}
+			};
+
+			img.src = opciones.src;
+		};
+
+		slices({
+			src: 'default.jpg',
+			selector: '#slices',
+			divisiones: 10
+		});
+	});
+
+
+	</script>
+</head>
+<body>
+	<div id="slices"></div>
+</body>
+</html>
